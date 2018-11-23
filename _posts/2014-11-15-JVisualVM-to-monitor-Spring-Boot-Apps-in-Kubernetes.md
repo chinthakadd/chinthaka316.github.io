@@ -31,7 +31,7 @@ Since java 6 SE, it automatically enables java agents running locally to monitor
 started locally. Therefore automatically you would see your java applications like Spring boot ones being
 displayed in `jvisualvm`. See below.
 
-![Spring Boot App shown in JVisualVM](https://raw.githubusercontent.com/chinthakadd/tech-notes/blob/master/kubernetes/images/jvisualvm-local.png)
+![Spring Boot App shown in JVisualVM](https://raw.githubusercontent.com/chinthakadd/tech-notes/master/kubernetes/images/jvisualvm-local.png)
 
 But our objective today is to monitor a Spring Boot Application deployed kubernetes.
 Java by default does not enable remove agents to connect to JVM's JMX attach APIs, obviously for
@@ -120,11 +120,11 @@ Forwarding from [::1]:9999 -> 9999
 
 Now, simply we can add a new connection in JVisualVM as below.
 
-![Adding new connection](https://raw.githubusercontent.com/chinthakadd/tech-notes/blob/master/kubernetes/images/jvisualvm-k8-connect.png)
+![Adding new connection](https://raw.githubusercontent.com/chinthakadd/tech-notes/master/kubernetes/images/jvisualvm-k8-connect.png)
 
 Voila.! You should see your application monitored as below.
 
-![Application Deployed in Kubernetes](https://raw.githubusercontent.comchinthakadd/tech-notes/blob/master/kubernetes/images/jvisualvm-k8-poc.png)
+![Application Deployed in Kubernetes](https://raw.githubusercontent.comchinthakadd/tech-notes/master/kubernetes/images/jvisualvm-k8-poc.png)
 
 You can do the same with Java Mission Control as well. Simply add a new jmx connection with same
 properties as above.
@@ -145,8 +145,8 @@ useful metrics out of Spring Boot Applications and do pod level monitoring
 
 ## References:
 
-[https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jvisualvm.html]
-[https://docs.oracle.com/javase/7/docs/technotes/guides/management/agent.html]
-[https://fedidat.com/250-jvisualvm-openshift-pod/]
-[http://darksideofthedev.com/java-profiling-with-visualvm-in-docker-container/]
-[http://www.adam-bien.com/roller/abien/entry/how_to_establish_jmx_connection]
+[https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jvisualvm.html]: https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jvisualvm.html
+[https://docs.oracle.com/javase/7/docs/technotes/guides/management/agent.html]: https://docs.oracle.com/javase/7/docs/technotes/guides/management/agent.html
+[https://fedidat.com/250-jvisualvm-openshift-pod/]:https://fedidat.com/250-jvisualvm-openshift-pod/
+[http://darksideofthedev.com/java-profiling-with-visualvm-in-docker-container/]:http://darksideofthedev.com/java-profiling-with-visualvm-in-docker-container/
+[http://www.adam-bien.com/roller/abien/entry/how_to_establish_jmx_connection]:http://www.adam-bien.com/roller/abien/entry/how_to_establish_jmx_connection
