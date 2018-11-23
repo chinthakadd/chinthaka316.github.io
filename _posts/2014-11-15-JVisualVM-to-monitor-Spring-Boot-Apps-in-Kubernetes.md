@@ -130,7 +130,7 @@ You can do the same with Java Mission Control as well. Simply add a new jmx conn
 properties as above.
 
 You can find all resources related to this blogpost in:
-[https://github.com/chinthakadd/k8-jvisualvm-poc]
+[https://github.com/chinthakadd/k8-jvisualvm-poc](https://github.com/chinthakadd/k8-jvisualvm-poc)
 
 ## What's Next?
 
