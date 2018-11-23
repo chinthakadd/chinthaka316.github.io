@@ -145,8 +145,8 @@ useful metrics out of Spring Boot Applications and do pod level monitoring
 
 ## References:
 
-[https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jvisualvm.html]: https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jvisualvm.html
-[https://docs.oracle.com/javase/7/docs/technotes/guides/management/agent.html]: https://docs.oracle.com/javase/7/docs/technotes/guides/management/agent.html
-[https://fedidat.com/250-jvisualvm-openshift-pod/]:https://fedidat.com/250-jvisualvm-openshift-pod/
-[http://darksideofthedev.com/java-profiling-with-visualvm-in-docker-container/]:http://darksideofthedev.com/java-profiling-with-visualvm-in-docker-container/
-[http://www.adam-bien.com/roller/abien/entry/how_to_establish_jmx_connection]:http://www.adam-bien.com/roller/abien/entry/how_to_establish_jmx_connection
+[https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jvisualvm.html](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jvisualvm.html)
+[https://docs.oracle.com/javase/7/docs/technotes/guides/management/agent.html](https://docs.oracle.com/javase/7/docs/technotes/guides/management/agent.html)
+[https://fedidat.com/250-jvisualvm-openshift-pod/](https://fedidat.com/250-jvisualvm-openshift-pod/)
+[http://darksideofthedev.com/java-profiling-with-visualvm-in-docker-container/](http://darksideofthedev.com/java-profiling-with-visualvm-in-docker-container/)
+[http://www.adam-bien.com/roller/abien/entry/how_to_establish_jmx_connection](http://www.adam-bien.com/roller/abien/entry/how_to_establish_jmx_connection)
