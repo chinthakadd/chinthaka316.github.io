@@ -124,7 +124,7 @@ Now, simply we can add a new connection in JVisualVM as below.
 
 Voila.! You should see your application monitored as below.
 
-![Application Deployed in Kubernetes](https://raw.githubusercontent.comchinthakadd/tech-notes/master/kubernetes/images/jvisualvm-k8-poc.png)
+![Application Deployed in Kubernetes](https://raw.githubusercontent.com/chinthakadd/tech-notes/master/kubernetes/images/jvisualvm-k8-poc.png)
 
 You can do the same with Java Mission Control as well. Simply add a new jmx connection with same
 properties as above.
