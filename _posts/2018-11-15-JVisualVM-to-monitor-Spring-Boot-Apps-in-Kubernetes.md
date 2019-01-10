@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How to use JVisualVM and Java Mission Control to monitor Spring Boot Apps in Kubernetes
+title: How to use JVisualVM and Java Mission Control to monitor Spring Boot Apps in Kubernetes?
 ---
 
 I thought of writing this as it is useful starting point for any developer who wants to start
