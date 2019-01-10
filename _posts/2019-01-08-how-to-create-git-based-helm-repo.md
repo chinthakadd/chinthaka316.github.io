@@ -86,8 +86,5 @@ $ helm fetch simple-helm-repo/test-chart --untar
 ```
 
 A simple asciicinema on how I achieved this.
-<!--
-{% asciicast 220186 %} -->
-
 
 [![asciicast](https://asciinema.org/a/JEeKhFymVSg0Kh2bI8gYyfzcS.svg)](https://asciinema.org/a/JEeKhFymVSg0Kh2bI8gYyfzcS)
