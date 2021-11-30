@@ -2,17 +2,17 @@
 layout: post
 title: Learning Sagas Step by Step
 ---
-Saga Pattern attempts to solve one of the biggest challenges encountered in micro-service architecture in terms of managing transactions across service boundaries. However it is not a simple pattern by itself to implemented by developers (in comparison to ACID transactions) and requires lot more knowledge, experience and research. I am writing this article to share the knowledge I have gathered through the journey of my research and also write my own thoughts and interpretations through this article.
+Saga Pattern attempts to solve one of the biggest challenges encountered in micro-service architecture in terms of managing transactions across service boundaries. However implementing Sagas is a challenge on its own for us developers (as opposed to ACID transactions) and requires lot more knowledge, experience and research. I am writing this article to share the knowledge I have gathered through the journey of my research and also share my own thoughts and interpretations through this article.
 
 ## Role of a Transaction and How Does It Apply to Distributed System Architecture
 
-The concept of transaction is extremely important in achieving data consistency. Transactions in the form ACID (Atomicity, Consistency, Isolation and Durability) are the best perceived form of transactions that developers are used to deal with. ACID transactions provide definitive means on how to manage data while a transaction is in play and preserves the ACID properties.  When the data is local to a single system backed by may be one or few data stores, ACID can be implemented pretty seamlessly. In Java and Spring World, we are so use to the Transactional Specification of Java EE and Awesome AOP based Spring Implementation of Transactions (`@Transactional`). 
+The concept of transaction is extremely important in achieving data consistency. Transactions in the form ACID (Atomicity, Consistency, Isolation and Durability) are the best perceived form of transactions that developers are used to deal with. ACID transactions provide definitive means on how to manage data while a transaction is in play and preserves the ACID properties.  When the data is local to a single system backed by may be one or few data stores, ACID can be implemented pretty seamlessly. In Java and Spring World, we are so used to the Transactional Specification of Java EE and Awesome AOP based Spring Implementation of Transactions (`@Transactional`). 
 
-While ACID is great, it is a bigger challenge to implement it in the context of distributed systems. The term Distributed Transactions sounds to be the solution for this. Essentially the idea is to have a Distributed Transaction Manager (Coordinator) that can coordinate transactions across multiple systems and ensure that transaction is performed only with consensus of all participants. This orchestration is not that simple and not all that efficient when it comes to the distributed world. It gets even further complicated when participating systems operate asynchronously and in a event driven fashion.
+While ACID is great, achieving all these 4 properties at once becomes complicated in the context of distributed systems. The term Distributed Transactions sounds to be the solution for this. Essentially the idea is to have a Distributed Transaction Manager (Coordinator) that can coordinate transactions across multiple systems and ensure that transaction is performed only with consensus of all participants. This orchestration is not that simple and not all that efficient when it comes to the distributed world. It gets even further complicated when participating systems operate asynchronously and in a event driven fashion.
 
 ## Distributed Transactions - Why Not? What are the Challenges?
 
-The defacto standard for Distributed Transactions is Open XA (Extended Architecture) which uses the concept of Two Phase Commit. For XA Transactions to be implemented, it requires that the participating data stores are inherently XA Compliant. Most SQL databases (ex: Oracle) and legacy message brokers (ex: IBM MQ) are XA compliant. If we are building our distributed systems in an ecosystem which is fully XA compliant, implementing Distributed Transaction may truly be possible. There are frameworks such as `Atomikos` and `Narayana` which provides Distributed Transaction Management implementations as well. But...
+The defacto standard for Distributed Transactions is Open XA (Extended Architecture) which uses the concept of Two Phase Commit. For XA Transactions to be implemented, it requires that the participating data stores are inherently XA Compliant. Most SQL databases (ex: Oracle) and legacy message brokers (ex: IBM MQ) are XA compliant. If we are building our distributed systems in an ecosystem which is fully XA compliant, implementing Distributed Transactions may truly be possible. There are frameworks such as `Atomikos` and `Narayana` which provides Distributed Transaction Management implementations as well. But...
 
 ### Challenge 01:  Modern databases and messaging systems  are not  XA compliant
 
@@ -71,6 +71,8 @@ Now, Sagas are Sequence of Local Transactions. There are 3 kinds of Transactions
 - Retriable Transactions
 
 The following diagram explain it a bit more.
+
+<!-- %%![[Saga-Txn-Types.excalidraw]]%% -->
 
 ![Saga Transaction Types](https://raw.githubusercontent.com/chinthakadd/chinthakadd.github.io/master/_posts/images/Saga-Txn-Types.png)
 
