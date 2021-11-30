@@ -3,8 +3,6 @@ layout: post
 title: Learning Sagas Step by Step
 ---
 
-## Learning Sagas Step by Step
-
 ### Role of Transactions and How Does Happen in Distributed System Architecture
 
 The concept of transaction is extremely important in achieving data consistency. Transactions in the form ACID (Atomicity, Consistency, Isolation and Durability) are the best perceived form of transactions that developers are used to deal with. ACID transactions provide definitive means to how to manage data while a transaction is in play and preserves the ACID properties.  When the data is local to a single system backed by may be one or few data stores, ACID can be implemented pretty seamlessly. In Java and Spring World, we are so use to the  Transactional Specification of Java EE and Awesome AOP based Spring Implementation of Transactions (@Transactional). 
