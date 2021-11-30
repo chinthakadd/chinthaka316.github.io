@@ -72,8 +72,6 @@ Now, Sagas are Sequence of Local Transactions. There are 3 kinds of Transactions
 
 The following diagram explain it a bit more.
 
-%%![[Saga-Txn-Types.excalidraw]]%%
-
 ![Saga Transaction Types](https://raw.githubusercontent.com/chinthakadd/chinthakadd.github.io/master/_posts/images/Saga-Txn-Types.png)
 
 So the simple idea is here is the Saga can go through a set of Compensatable Transactions before reaching a Pivot Transaction. Once Pivot Transaction is reached, a decision of whether the Saga is successful or not would be taken. If successful, it will proceed further to any pending retriable transactions from that point. If any transactions post pivot point fails, they would retried until they would be made successful (since they are guaranteed to be completed) in order to complete the Saga.
