@@ -2,6 +2,8 @@
 layout: post
 title: Learning Sagas Step by Step
 ---
+# Learning Sagas Step by Step
+
 Saga Pattern attempts to solve one of the biggest challenges encountered in micro-service architecture in terms of managing transactions across service boundaries. However implementing Sagas is a challenge on its own for us developers (as opposed to ACID transactions) and requires lot more knowledge, experience and research. I am writing this article to share the knowledge I have gathered through the journey of my research and also share my own thoughts and interpretations through this article.
 
 ## Role of a Transaction and How Does It Apply to Distributed System Architecture
@@ -64,6 +66,15 @@ You will need Orchestrator to conduct the Saga Transaction. It would ensure that
 
 Orchestration based Sagas provides more simplicity and understanding specially in case of complex Sagas. Also it's easier to define the Saga Sequence and monitor their progress from a single point of execution. However, we should be mindful not to leak too much business logic that actually belongs to participants into the Orchestrator itself.
 
+#### Sagas as a State Machine
+
+A well defined Saga is actually State Machine since it has well defined set of states and state transitions. Another benefit in orchestration based approach is that sagas can be modeled as state machines and even represented or visualized the same way. The Saga Orchestrator would always have a state and depending on forward or compensating transactions, its state would transit to another deterministic set of states. 
+
+The following is an example of a order processing saga depicted as a State Machine.
+
+<!-- ![[Saga-as-a-Statemachine.excalidraw]] -->
+![Saga Transaction Types](https://raw.githubusercontent.com/chinthakadd/chinthakadd.github.io/master/_posts/images/Saga-as-a-Statemachine.png)
+
 Now, Sagas are Sequence of Local Transactions. There are 3 kinds of Transactions, and those are:
 
 - Compensatable Transactions
@@ -82,7 +93,7 @@ So the simple idea is here is the Saga can go through a set of Compensatable Tra
 
 There are several ways to manage the lack the isolation and the side effects of the inconsistent reads and loss of updates.
 
-First idea that is generally discussed is to use some sort of locking mechanisms. In regular transactions, we are used to Optimistic and Pessimistic Locks and the same can be applied in the context of Saga. The idea is that an record that is currently being operated on by a Saga that is in process is not allowed to be concurrently updated through introduction of Locking. This prevents loss of updates due to concurrency of multiple saga executions (concurrent sagas updating an account balance for example). When we compare Pessimistic vs. Optimistic locking, obviously Optimistic is the way to go, given that is is far more performant compared the other. However, this would mean that Saga Participant may often encounter concurrent modification related failures while performing their part in a saga execution. It is not a real transaction failure in terms of the Saga (it is retriable) and therefore participants must attempt to retry until the local transaction is made successfully.
+First idea that is generally discussed is to use some sort of locking mechanisms. In regular transactions, we are used to Optimistic and Pessimistic Locks and the same can be applied in the context of Saga. The idea is that a record that is currently being operated on by a Saga that is in process is not allowed to be concurrently updated through introduction of Locking. This prevents loss of updates due to concurrency of multiple saga executions (concurrent sagas updating an account balance for example). When we compare Pessimistic vs. Optimistic locking, obviously Optimistic is the way to go, given that is is far more performant compared the other. However, this would mean that Saga Participant may often encounter concurrent modification related failures while performing their part in a saga execution. It is not a real transaction failure in terms of the Saga (it is retriable) and therefore participants must attempt to retry until the local transaction is made successfully.
 
 Other forms of locks are referred to as Semantic Locks which are essentially indicators that you need to maintain within the business data tables that reflects the state of it. Such Semantic Locks can be used by the business logic to make decisions on how to proceed with any new Saga Transactions or any other requests that attempts to involve with the particular data. For example, when an order is in progress, depending on it's `status`, Cancellation API can take decisions whether the Order can be allowed to be canceled or not. For example, when order is in `PENDING` status, it may accept it, where as when the status is moved to `SHIPMENT_READY` or `SHIPMENT_COMPLETE`, it may reject any cancellation requests. If you want to achieve full serializability of Order entity in this example, you can achieve that with a Semantic Lock. You do that by rejecting any attempts to modify the Order entity by any other Saga or other means until the current Saga is completed. Such serializability will simplify the Saga implementations, but it may not always be the case based on the business need. 
 
@@ -93,7 +104,6 @@ Similarly semantic locks can help readers be notified the record's volatility. F
 In terms of Isolation, one of the main factors to consider is how we design compensation of our own participant logic. The motive of compensation is to bring a particular part of the overall data involved in a Saga back to a consistent state. Therefore we need to be extra-cautious on how compensation logic is performed. Simplest example is how an account is credited if a particular payment is canceled. Compensation should ensure that most recent balance of the customer is credited with the exact withheld amount (Ensure no loss of updates while performing that). Sometimes compensations is simply reversing an operation already performed, but it not always the case. However, one thing for sure. We need to identify all compensatable transactions and ensure that there is a compensation logic defined for it. Otherwise it defeats the entire purpose of using Sagas to solve this problem in the first place.
 
 Given the concurrency and distributed nature of it, isolation is one of the toughest challenges that remain in the Saga Pattern implementation. It requires an extensive design thought process to determine how each use case will be handled with different strategies in a case by case basis.
-
 
 Finally, the concept of Sagas and its adoption in the microservices landscape is a topic that is extensively discussed in the community. `Chris Richardson`'s `Microservices Patterns: With Examples in Java` is one of the best literature for this which was the primary source of my readings as well. 
 
