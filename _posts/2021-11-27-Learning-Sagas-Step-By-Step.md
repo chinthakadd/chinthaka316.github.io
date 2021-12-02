@@ -68,7 +68,9 @@ Orchestration based Sagas provides more simplicity and understanding specially i
 
 #### Sagas as a State Machine
 
-A well defined Saga is actually State Machine since it has well defined set of states and state transitions. Another benefit in orchestration based approach is that sagas can be modeled as state machines and even represented or visualized the same way. The Saga Orchestrator would always have a state and depending on forward or compensating transactions, its state would transit to another deterministic set of states. 
+A well defined Saga becomes a state machine since it has well defined set of states and state transitions. 
+
+Therefore, another benefit in orchestration based approach is that sagas can be modeled as state machines and even depicted / visualized the same way. The Saga Orchestrator would always have a state and depending on forward or compensating transactions, its state would transit to one of the valid states from a deterministic set of states. 
 
 The following is an example of a order processing saga depicted as a State Machine.
 
