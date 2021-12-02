@@ -2,8 +2,6 @@
 layout: post
 title: Learning Sagas Step by Step
 ---
-# Learning Sagas Step by Step
-
 Saga Pattern attempts to solve one of the biggest challenges encountered in micro-service architecture in terms of managing transactions across service boundaries. However implementing Sagas is a challenge on its own for us developers (as opposed to ACID transactions) and requires lot more knowledge, experience and research. I am writing this article to share the knowledge I have gathered through the journey of my research and also share my own thoughts and interpretations through this article.
 
 ## Role of a Transaction and How Does It Apply to Distributed System Architecture
