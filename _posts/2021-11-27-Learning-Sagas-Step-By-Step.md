@@ -99,17 +99,17 @@ Other forms of locks are referred to as Semantic Locks which are essentially ind
 
 Similarly semantic locks can help readers be notified the record's volatility. For example, if a Transaction is in progress, Account's Current Balance may be volatile across multiple reads and that can be captured with an indicator flag. If the reader wants to stable current balance, it may have to repeat until the transactions complete to get a consistent value or treat the current value with the consideration of all pending transactions. For example, if customer wants to initiate a transaction while he has many other pending transactions in place, sufficient balance calculation for the account must consider all pending transactions as well. 
 
+Given the concurrency and distributed nature of it, isolation is one of the toughest challenges that remain in the Saga Pattern implementation. It requires an extensive design thought process to determine how each use case will be handled with different strategies in a case by case basis.
+
 **Don't Let Compensations Over or Under Compensate**
 
 In terms of Isolation, one of the main factors to consider is how we design compensation of our own participant logic. The motive of compensation is to bring a particular part of the overall data involved in a Saga back to a consistent state. Therefore we need to be extra-cautious on how compensation logic is performed. Simplest example is how an account is credited if a particular payment is canceled. Compensation should ensure that most recent balance of the customer is credited with the exact withheld amount (Ensure no loss of updates while performing that). Sometimes compensations is simply reversing an operation already performed, but it not always the case. However, one thing for sure. We need to identify all compensatable transactions and ensure that there is a compensation logic defined for it. Otherwise it defeats the entire purpose of using Sagas to solve this problem in the first place.
-
-Given the concurrency and distributed nature of it, isolation is one of the toughest challenges that remain in the Saga Pattern implementation. It requires an extensive design thought process to determine how each use case will be handled with different strategies in a case by case basis.
 
 Finally, the concept of Sagas and its adoption in the microservices landscape is a topic that is extensively discussed in the community. `Chris Richardson`'s `Microservices Patterns: With Examples in Java` is one of the best literature for this which was the primary source of my readings as well. 
 
 While there are many frameworks and products that can help build Saga Transactions for Micro-services, the two Java based libraries that comes up are Eventuate Tram (developed by Chris Richardson and his team), and Axon Framework. Other frameworks such as Eclipse Microprofile LRA, Spring Statemachine are also candidates which can support Saga development. Apart from those, we also have different workflow engine products that could be used to build Sagas.
 
-Once we understand the concepts of Sagas and determine that we most definitely need Sagas, the technology selection would be next biggest challenge that we start facing. I am currently learning about some of these available frameworks to get a better understanding of them and hopefully I can document my learnings as I make progress.
+Once we understand the concepts of Sagas and determine that we most definitely need Sagas, the technology selection would be the next biggest challenge that we start facing. I am currently learning about some of these available frameworks to get a better understanding of them and hopefully I can document my learnings as I make progress.
 
 Finally I have listed few references that I have found through my research.
 
