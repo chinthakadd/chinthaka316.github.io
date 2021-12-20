@@ -3,7 +3,7 @@ layout: post
 title: Java equals() and hashCode() Methods and Making Sure that We Got Them Right!
 ---
 
-I was writing a small piece of code for a Proof of Concept, and require to write an equals method and was wondering if I had given thought to it in my career of 8 years. Yes I know it, but do I really know it enough. This was the revision exercise I did, which I thought of sharing as an simplistic article with everyone. 
+I was writing a small piece of code for a Proof of Concept, and required to write an equals method and was wondering if I had given thought to it in my career of 8 years. Yes I know it, but do I really know it enough. This was the revision exercise I did, which I thought of sharing as an simplistic article with everyone. 
 
 These are two very important methods that all Java developers are well aware of. And it is such a basic topic, but may be due to the simplicity of the concept, and also due to the fact that IDEs that we use today generate them very nicely, we tend to forget or overlook it. So I thought of documenting some details around it.
 
