@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Refreshing Memory & Have a Little Deeper Look at Java equals() and hashCode() Methods
+title: Refresh Memory While Having a Deeper Look at Java equals() and hashCode() Methods
 ---
 
 I was writing a small piece of code for a Proof of Concept, and required to write an equals method and was wondering if I had given thought to it in my career of 8 years. Yes I know it, but do I really know it enough. This was the revision exercise I did, which I thought of sharing as an simplistic article with everyone. 
