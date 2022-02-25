@@ -41,8 +41,8 @@
 <meta name="generator" content="Jekyll v4.2.1" />
 <meta property="og:title" content="Contract Testing for Event Driven Architectures - Can We, Do We and How Do We?" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="In recent past, I had the chance to involve deeply in setting up a developer testing strategy for microservices that follow Event Driven Architecture (EDA) patterns. As a part of this, we performed a deep dive analysis to understand how to introduce Contract Testing to EDA." />
-<meta property="og:description" content="In recent past, I had the chance to involve deeply in setting up a developer testing strategy for microservices that follow Event Driven Architecture (EDA) patterns. As a part of this, we performed a deep dive analysis to understand how to introduce Contract Testing to EDA." />
+<meta name="description" content="Contract Testing for Event Driven Architectures: Can We, Do We and How Do We?" />
+<meta property="og:description" content="Contract Testing for Event Driven Architectures: Can We, Do We and How Do We?" />
 <link rel="canonical" href="http://localhost:4000/posts/Contract-Testing-For-EDA/" />
 <meta property="og:url" content="http://localhost:4000/posts/Contract-Testing-For-EDA/" />
 <meta property="og:site_name" content="Chinthaka Dharmasiri" />
@@ -52,7 +52,7 @@
 <meta property="twitter:title" content="Contract Testing for Event Driven Architectures - Can We, Do We and How Do We?" />
 <meta name="twitter:site" content="@chinthaka316" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-02-25T04:30:52+00:00","datePublished":"2022-02-24T00:00:00+00:00","description":"In recent past, I had the chance to involve deeply in setting up a developer testing strategy for microservices that follow Event Driven Architecture (EDA) patterns. As a part of this, we performed a deep dive analysis to understand how to introduce Contract Testing to EDA.","headline":"Contract Testing for Event Driven Architectures - Can We, Do We and How Do We?","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/Contract-Testing-For-EDA/"},"url":"http://localhost:4000/posts/Contract-Testing-For-EDA/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-02-25T07:06:06+00:00","datePublished":"2022-02-24T00:00:00+00:00","description":"Contract Testing for Event Driven Architectures: Can We, Do We and How Do We?","headline":"Contract Testing for Event Driven Architectures - Can We, Do We and How Do We?","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/Contract-Testing-For-EDA/"},"url":"http://localhost:4000/posts/Contract-Testing-For-EDA/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -345,6 +345,140 @@
 
 
 
+  
+  
+
+  
+    
+      
+      
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+        
+
+    
+      
+
+      <!-- lazy-load images <https://github.com/ApoorvSaxena/lozad.js#usage> -->
+
+      
+
+    
+
+    <!-- Add SVG placehoder to prevent layout reflow -->
+
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    
+
+  
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+        
+      
+      
+        
+      
+      
+        
+      
+      
+        
+
+    
+      
+
+      <!-- lazy-load images <https://github.com/ApoorvSaxena/lozad.js#usage> -->
+
+      
+
+    
+
+    <!-- Add SVG placehoder to prevent layout reflow -->
+
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    
+
+  
+
+  
+
+
 
 <!-- Add header for code snippets -->
 
@@ -468,12 +602,12 @@
 -->
 
 <em class="timeago"
-    data-ts="1645763452"
+    data-ts="1645772766"
     
       data-toggle="tooltip" data-placement="bottom" data-tooltip-df="llll"
     
     >
-  2022-02-24
+  2022-02-25
 </em>
 
       </span>
@@ -499,7 +633,7 @@
 
 <!-- return element -->
 <span class="readtime" data-toggle="tooltip" data-placement="bottom"
-  title="2156 words">
+  title="2159 words">
   <em>11 min</em> read</span>
 
 
@@ -512,25 +646,21 @@
 </div> <!-- .post-meta -->
 
 <div class="post-content">
-  <p>In recent past, I had the chance to involve deeply in setting up a developer testing strategy for microservices that follow Event Driven Architecture (EDA) patterns. As a part of this, we performed a deep dive analysis to understand how to introduce Contract Testing to EDA.</p>
+  <h1 id="contract-testing-for-event-driven-architectures-can-we-do-we-and-how-do-we">Contract Testing for Event Driven Architectures: Can We, Do We and How Do We?</h1>
+
+<p>In recent past, I had the chance to involve deeply in setting up a developer testing strategy for microservices that follow Event Driven Architecture (EDA) patterns. As a part of this, we performed a deep dive analysis to understand how to introduce Contract Testing to EDA.</p>
 
 <p>While Contract Testing is an important testing concept which became extremely popular in the microservices world, it is mostly associated with the RESTful realm. Therefore when it comes to messaging, we wanted to evaluate how contract testing fits in the test pyramid. Can we actually perform Contract Testing? Are there any challenges? What value does it bring? Pressed reset button and we went into research mode as it required us to dig deeper.</p>
+
+<p><img data-src="https://raw.githubusercontent.com/chinthakadd/chinthakadd.github.io/master/_posts/images/Test-Pyramid.png" alt="Testing Pyramid" data-proofer-ignore></p>
 
 <p>In this article I would like share what we learnt and the opinion that we built around it. As all opinions go, it is subjected to change, but given the current context, we think it is the right way to go.</p>
 
 <p><strong>First of all, why are we even talking about Contract Testing?</strong></p>
 
-<p>TODO: Test Pyramid - small diagram goes here..</p>
-
 <p>I am not going to bore you with my explanations around how Contract Testing typically work. Instead I have referenced some of the good literature around that in References section.</p>
 
-<p>At a gist, Contract Testing is a verification mechanism to ensure that producer - consumer relationships that get formed due to API based integration are maintained in a healthy fashion. Given it is a Test that lives lowers in the test pyramid, it allows you to identify such potential breaking changes earlier in the development lifecycle.</p>
-
-<p>In essence, Contract Testing is all about testing the honesty of consumers and producers and evaluate how truthful they are to each other in this relationship they have built. It provides a platform for communication and collaboration and helps them built a long lasting relationships :) :) .</p>
-
-<p>If you want to learn Consumer Driven Contracts and also have a good laugh while doing so, I recommend watching the following presentation by Ben Sayers and Mauri Edo from 2016.</p>
-
-<p>https://www.youtube.com/watch?v=-6x6XBDf9sQ&amp;list=PLiMP2R4ptDW3aFt2zN0qmgvdmJnXQKePh&amp;index=7&amp;t=662s</p>
+<p>At a gist, Contract Testing is a verification mechanism to ensure that producer - consumer relationships that get formed due to API based integration are maintained in a healthy fashion. Given it is a Test that lives lowers in the test pyramid, it allows you to identify such potential breaking changes earlier in the development lifecycle. In essence, Contract Testing is all about testing the honesty of consumers and producers and evaluate how truthful they are to each other in this relationship they have built. It provides a platform for communication and collaboration and helps them built a long lasting relationships. If you want to learn Consumer Driven Contracts and also have a good laugh while doing so, I recommend watching the following presentation by Ben Sayers and Mauri Edo from 2016 <a href="https://www.youtube.com/watch?v=-6x6XBDf9sQ&amp;list=PLiMP2R4ptDW3aFt2zN0qmgvdmJnXQKePh&amp;index=7&amp;t=662s">Video</a></p>
 
 <p>Contract Testing is a well established pattern in the REST world. Specifically the Consumer Driven Contract (CDC) Testing is widely adopted. In CDC, Consumer writes the contracts that defines their expectations and publishes it. These contracts are verified against the Producer APIs. There are two main frameworks for Consumer Driven Contract Testing that are widely adopted.</p>
 
@@ -566,6 +696,8 @@
 </ul>
 
 <p>TODO: Simple Diagram Explaining the EDA described above (MS, Kafka, Schema Registry)</p>
+
+<p><img data-src="https://raw.githubusercontent.com/chinthakadd/chinthakadd.github.io/master/_posts/images/EDA-Highlevel.png" alt="EDA with Kafka &amp; Avro" data-proofer-ignore></p>
 
 <p>If we are thinking of an Event Driven Architecture using Kafka as the Messaging Platform, this would be a common scenario. Next we need to look at how Contract Testing becomes applicable in this context…</p>
 
@@ -640,8 +772,8 @@ When I mean Integration Testing, I really mean it because it involves a wire pro
 <p>So we started asking ourselves, why should we make two different choices for two different protocols.
 For Pact as a Framework, their design choice makes sense to them.</p>
 
-<div class="language-text highlighter-rouge"><div class="code-header">
-        <span data-label-text="Text"><i class="fas fa-code small"></i></span>
+<div class="language-plaintext highlighter-rouge"><div class="code-header">
+        <span data-label-text="Plaintext"><i class="fas fa-code small"></i></span>
       <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 </pre></td><td class="rouge-code"><pre>To reiterate: Pact does not know about the various message queueing technologies - there are simply too many! And more importantly, Pact is really about testing the messages that pass between them, you can still write your standard functional tests using other frameworks designed for such things.
 </pre></td></tr></tbody></table></code></div></div>
