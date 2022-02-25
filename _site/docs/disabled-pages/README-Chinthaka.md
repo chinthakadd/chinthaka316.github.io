@@ -1,1 +1,0 @@
-Move these pages back to _tabs when you want them displayed.

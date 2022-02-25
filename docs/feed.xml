@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>Chinthaka Dharmasiri</title>
   <subtitle>Technology Enthusiast from Sri Lanka, currently living in Pittsburgh.</subtitle>
-  <updated>2022-02-25T07:08:58+00:00</updated>
+  <updated>2022-02-25T07:17:29+00:00</updated>
   <author>
     <name>Chinthaka Dharmasiri</name>
     <uri>http://localhost:4000/</uri>
@@ -44,11 +44,11 @@
 
 
 
-      Contract Testing for Event Driven Architectures: Can We, Do We and How Do We?
+      Introduction
 
 In recent past, I had the chance to involve deeply in setting up a developer testing strategy for microservices that follow Event Driven Architecture (EDA) patterns. As a part of this, we performed a deep dive analysis to understand how to introduce Contract Testing to EDA.
 
-While Contract Testing is an important tes...
+While Contract Testing is an important testing concept which became extremely popular in the microservices ...
     </summary>
   
 

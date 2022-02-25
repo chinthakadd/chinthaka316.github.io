@@ -4,11 +4,13 @@ title: Contract Testing for Event Driven Architectures - Can We, Do We and How D
 ---
  
 
-# Contract Testing for Event Driven Architectures: Can We, Do We and How Do We?
+## Introduction
 
 In recent past, I had the chance to involve deeply in setting up a developer testing strategy for microservices that follow Event Driven Architecture (EDA) patterns. As a part of this, we performed a deep dive analysis to understand how to introduce Contract Testing to EDA. 
 
 While Contract Testing is an important testing concept which became extremely popular in the microservices world, it is mostly associated with the RESTful realm. Therefore when it comes to messaging, we wanted to evaluate how contract testing fits in the test pyramid. Can we actually perform Contract Testing? Are there any challenges? What value does it bring? Pressed reset button and we went into research mode as it required us to dig deeper. 
+
+<!-- ![[Test-Pyramid.excalidraw]] -->
 
 ![Testing Pyramid](https://raw.githubusercontent.com/chinthakadd/chinthakadd.github.io/master/_posts/images/Test-Pyramid.png)
 
@@ -43,13 +45,12 @@ Assume the following:
 - Kafka Messaging uses Avro as the Serialization mechanism (Or assume other schema driven serialization formats but definitely not JSON)
 - We also have a Schema Registry in place to support schema collaboration and compatibility verification (assume Confluent Schema Registry)
 
-TODO: Simple Diagram Explaining the EDA described above (MS, Kafka, Schema Registry)
-
+<!-- ![[EDA-Highlevel.excalidraw]] -->
 ![EDA with Kafka & Avro](https://raw.githubusercontent.com/chinthakadd/chinthakadd.github.io/master/_posts/images/EDA-Highlevel.png)
 
 If we are thinking of an Event Driven Architecture using Kafka as the Messaging Platform, this would be a common scenario. Next we need to look at how Contract Testing becomes applicable in this context...
 
-**Can Contract Testing be applicable for Messaging?**
+## Is Contract Testing  applicable for Messaging?
 
 Well, given Messaging is also a form of API, Contract Testing can apply to messaging and EDA as it also results in Producer - Consumer relationships very similar to REST. 
 
@@ -71,6 +72,8 @@ I want the Producer to comply with this contract and run verification tests agai
 ```
 
 This looks a very reasonable requirement. Now how do we achieve this? To find answers to this question,  we needed to look at `Pact` and `Spring Cloud Contract` and see how can use those frameworks to support this requirement.
+
+## Messaging Support in Pact & SCC
 
 - How Spring Cloud Contract provides messaging support?
 
@@ -118,6 +121,8 @@ Does SCC support Kafka / Avro? In fact, does SCC support Kafka / Avro + Schema R
 
 This is where we came to a bit of dilemma. How do we go from here? So we started breaking the problem down. Let's focus on actual difference of REST vs. Messaging with Kafka. 
 
+## REST vs. Messaging - They are not the same...
+
 In REST APIs, we define a Specification using Open API. The term "specification" is the key here. It is not a real schema. We use JSON as the serialization format for request and responses which is not schema oriented. The lack of such schema orientation made Contract Testing absolutely vital in the context of REST. We had no other choice to validate if the specification is actually implemented in the producer side. 
 
 Also most producer APIs were often poorly designed by our own mistakes breaking single responsibility principle. We often made APIs do many things in one, and it was easy because there was no schema or a rule that prevented us from doing so. If the design was proper, the specification itself could have covered most of the contracts. But it never did.  On the other hand, specifications are not capable to upheld compatibility rules. They were not meant for it.
@@ -140,13 +145,15 @@ Further more and finally. Contract Testing is most effective when you have a man
 
 So it becomes a trade-off between the value of testing vs. the maintainability cost of these tests. 
 
-**Is CDC the only Option here for Messaging?**
+## Is CDC the only Option here for Messaging?
 
 This was a question that we asked the community as well.
 
 https://stackoverflow.com/questions/71028845/do-we-need-to-do-consumer-driven-contract-testing-kafka-driven-micro-services-wh
 
 An alternative would be to write Producer Driven Contract Tests instead. However at present, the same challenges presented above for CDC in messaging applies in here as well. But this is an approach that may be promising if we can have tooling for it.
+
+## Conclusion
 
 Therefore, given the current context, looking at the messaging and schema oriented serialization format support of Contract Testing tools, our team decided that this is not the right time to invest our efforts in writing Contract Testing for Messaging. 
 
@@ -157,7 +164,7 @@ Like I said, we will keep an open mind about this. The community is very active 
 Of course if there are better alternatives, feel free to suggest and always happy to learn!!! Cheers..!!
 
 
-## References:
+## References
 
 TODO:...
 

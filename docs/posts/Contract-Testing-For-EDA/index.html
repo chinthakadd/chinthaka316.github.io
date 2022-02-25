@@ -41,8 +41,8 @@
 <meta name="generator" content="Jekyll v4.2.1" />
 <meta property="og:title" content="Contract Testing for Event Driven Architectures - Can We, Do We and How Do We?" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="Contract Testing for Event Driven Architectures: Can We, Do We and How Do We?" />
-<meta property="og:description" content="Contract Testing for Event Driven Architectures: Can We, Do We and How Do We?" />
+<meta name="description" content="Introduction" />
+<meta property="og:description" content="Introduction" />
 <link rel="canonical" href="http://localhost:4000/posts/Contract-Testing-For-EDA/" />
 <meta property="og:url" content="http://localhost:4000/posts/Contract-Testing-For-EDA/" />
 <meta property="og:site_name" content="Chinthaka Dharmasiri" />
@@ -52,7 +52,7 @@
 <meta property="twitter:title" content="Contract Testing for Event Driven Architectures - Can We, Do We and How Do We?" />
 <meta name="twitter:site" content="@chinthaka316" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-02-25T07:06:06+00:00","datePublished":"2022-02-24T00:00:00+00:00","description":"Contract Testing for Event Driven Architectures: Can We, Do We and How Do We?","headline":"Contract Testing for Event Driven Architectures - Can We, Do We and How Do We?","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/Contract-Testing-For-EDA/"},"url":"http://localhost:4000/posts/Contract-Testing-For-EDA/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-02-25T07:06:06+00:00","datePublished":"2022-02-24T00:00:00+00:00","description":"Introduction","headline":"Contract Testing for Event Driven Architectures - Can We, Do We and How Do We?","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/Contract-Testing-For-EDA/"},"url":"http://localhost:4000/posts/Contract-Testing-For-EDA/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -513,6 +513,78 @@
       
 
     
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
 
     
 
@@ -633,7 +705,7 @@
 
 <!-- return element -->
 <span class="readtime" data-toggle="tooltip" data-placement="bottom"
-  title="2159 words">
+  title="2149 words">
   <em>11 min</em> read</span>
 
 
@@ -646,11 +718,13 @@
 </div> <!-- .post-meta -->
 
 <div class="post-content">
-  <h1 id="contract-testing-for-event-driven-architectures-can-we-do-we-and-how-do-we">Contract Testing for Event Driven Architectures: Can We, Do We and How Do We?</h1>
+  <h2 id="introduction"><span class="mr-2">Introduction</span><a href="#introduction" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2></h2>
 
 <p>In recent past, I had the chance to involve deeply in setting up a developer testing strategy for microservices that follow Event Driven Architecture (EDA) patterns. As a part of this, we performed a deep dive analysis to understand how to introduce Contract Testing to EDA.</p>
 
 <p>While Contract Testing is an important testing concept which became extremely popular in the microservices world, it is mostly associated with the RESTful realm. Therefore when it comes to messaging, we wanted to evaluate how contract testing fits in the test pyramid. Can we actually perform Contract Testing? Are there any challenges? What value does it bring? Pressed reset button and we went into research mode as it required us to dig deeper.</p>
+
+<!-- ![[Test-Pyramid.excalidraw]] -->
 
 <p><img data-src="https://raw.githubusercontent.com/chinthakadd/chinthakadd.github.io/master/_posts/images/Test-Pyramid.png" alt="Testing Pyramid" data-proofer-ignore></p>
 
@@ -695,13 +769,12 @@
   <li>We also have a Schema Registry in place to support schema collaboration and compatibility verification (assume Confluent Schema Registry)</li>
 </ul>
 
-<p>TODO: Simple Diagram Explaining the EDA described above (MS, Kafka, Schema Registry)</p>
-
+<!-- ![[EDA-Highlevel.excalidraw]] -->
 <p><img data-src="https://raw.githubusercontent.com/chinthakadd/chinthakadd.github.io/master/_posts/images/EDA-Highlevel.png" alt="EDA with Kafka &amp; Avro" data-proofer-ignore></p>
 
 <p>If we are thinking of an Event Driven Architecture using Kafka as the Messaging Platform, this would be a common scenario. Next we need to look at how Contract Testing becomes applicable in this context…</p>
 
-<p><strong>Can Contract Testing be applicable for Messaging?</strong></p>
+<h2 id="is-contract-testing--applicable-for-messaging"><span class="mr-2">Is Contract Testing  applicable for Messaging?</span><a href="#is-contract-testing--applicable-for-messaging" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2></h2>
 
 <p>Well, given Messaging is also a form of API, Contract Testing can apply to messaging and EDA as it also results in Producer - Consumer relationships very similar to REST.</p>
 
@@ -736,6 +809,8 @@ I want the Producer to comply with this contract and run verification tests agai
 </pre></td></tr></tbody></table></code></div></div>
 
 <p>This looks a very reasonable requirement. Now how do we achieve this? To find answers to this question,  we needed to look at <code class="language-plaintext highlighter-rouge">Pact</code> and <code class="language-plaintext highlighter-rouge">Spring Cloud Contract</code> and see how can use those frameworks to support this requirement.</p>
+
+<h2 id="messaging-support-in-pact--scc"><span class="mr-2">Messaging Support in Pact &amp; SCC</span><a href="#messaging-support-in-pact--scc" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2></h2>
 
 <ul>
   <li>How Spring Cloud Contract provides messaging support?</li>
@@ -791,6 +866,8 @@ For Pact as a Framework, their design choice makes sense to them.</p>
 
 <p>This is where we came to a bit of dilemma. How do we go from here? So we started breaking the problem down. Let’s focus on actual difference of REST vs. Messaging with Kafka.</p>
 
+<h2 id="rest-vs-messaging---they-are-not-the-same"><span class="mr-2">REST vs. Messaging - They are not the same…</span><a href="#rest-vs-messaging---they-are-not-the-same" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2></h2>
+
 <p>In REST APIs, we define a Specification using Open API. The term “specification” is the key here. It is not a real schema. We use JSON as the serialization format for request and responses which is not schema oriented. The lack of such schema orientation made Contract Testing absolutely vital in the context of REST. We had no other choice to validate if the specification is actually implemented in the producer side.</p>
 
 <p>Also most producer APIs were often poorly designed by our own mistakes breaking single responsibility principle. We often made APIs do many things in one, and it was easy because there was no schema or a rule that prevented us from doing so. If the design was proper, the specification itself could have covered most of the contracts. But it never did.  On the other hand, specifications are not capable to upheld compatibility rules. They were not meant for it.</p>
@@ -815,13 +892,15 @@ For Pact as a Framework, their design choice makes sense to them.</p>
 
 <p>So it becomes a trade-off between the value of testing vs. the maintainability cost of these tests.</p>
 
-<p><strong>Is CDC the only Option here for Messaging?</strong></p>
+<h2 id="is-cdc-the-only-option-here-for-messaging"><span class="mr-2">Is CDC the only Option here for Messaging?</span><a href="#is-cdc-the-only-option-here-for-messaging" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2></h2>
 
 <p>This was a question that we asked the community as well.</p>
 
 <p>https://stackoverflow.com/questions/71028845/do-we-need-to-do-consumer-driven-contract-testing-kafka-driven-micro-services-wh</p>
 
 <p>An alternative would be to write Producer Driven Contract Tests instead. However at present, the same challenges presented above for CDC in messaging applies in here as well. But this is an approach that may be promising if we can have tooling for it.</p>
+
+<h2 id="conclusion"><span class="mr-2">Conclusion</span><a href="#conclusion" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2></h2>
 
 <p>Therefore, given the current context, looking at the messaging and schema oriented serialization format support of Contract Testing tools, our team decided that this is not the right time to invest our efforts in writing Contract Testing for Messaging.</p>
 
@@ -831,7 +910,7 @@ For Pact as a Framework, their design choice makes sense to them.</p>
 
 <p>Of course if there are better alternatives, feel free to suggest and always happy to learn!!! Cheers..!!</p>
 
-<h2 id="references"><span class="mr-2">References:</span><a href="#references" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2></h2>
+<h2 id="references"><span class="mr-2">References</span><a href="#references" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2></h2>
 
 <p>TODO:…</p>
 
