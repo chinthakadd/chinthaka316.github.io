@@ -1,0 +1,192 @@
+
+
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>http://localhost:4000/</id>
+  <title>Chinthaka Dharmasiri</title>
+  <subtitle>Technology Enthusiast from Sri Lanka, currently living in Pittsburgh.</subtitle>
+  <updated>2022-02-25T05:25:08+00:00</updated>
+  <author>
+    <name>Chinthaka Dharmasiri</name>
+    <uri>http://localhost:4000/</uri>
+  </author>
+  <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml"/>
+  <link rel="alternate" type="text/html" hreflang="en"
+    href="http://localhost:4000/"/>
+  <generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator>
+  <rights> © 2022 Chinthaka Dharmasiri </rights>
+  <icon>/assets/img/favicons/favicon.ico</icon>
+  <logo>/assets/img/favicons/favicon-96x96.png</logo>
+
+
+  
+  <entry>
+    <title>Contract Testing for Event Driven Architectures - Can We, Do We and How Do We?</title>
+    <link href="http://localhost:4000/posts/Contract-Testing-For-EDA/" rel="alternate" type="text/html" title="Contract Testing for Event Driven Architectures - Can We, Do We and How Do We?" />
+    <published>2022-02-24T00:00:00+00:00</published>
+  
+    <updated>2022-02-25T04:30:52+00:00</updated>
+  
+    <id>http://localhost:4000/posts/Contract-Testing-For-EDA/</id>
+    <content src="http://localhost:4000/posts/Contract-Testing-For-EDA/" />
+    <author>
+      <name>Chinthaka Dharmasiri</name>
+    </author>
+
+  
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      In recent past, I had the chance to involve deeply in setting up a developer testing strategy for microservices that follow Event Driven Architecture (EDA) patterns. As a part of this, we performed a deep dive analysis to understand how to introduce Contract Testing to EDA.
+
+While Contract Testing is an important testing concept which became extremely popular in the microservices world, it is m...
+    </summary>
+  
+
+  </entry>
+
+  
+  <entry>
+    <title>Learning Sagas Step by Step</title>
+    <link href="http://localhost:4000/posts/Learning-Sagas-Step-By-Step/" rel="alternate" type="text/html" title="Learning Sagas Step by Step" />
+    <published>2021-11-27T00:00:00+00:00</published>
+  
+    <updated>2021-12-04T16:38:46+00:00</updated>
+  
+    <id>http://localhost:4000/posts/Learning-Sagas-Step-By-Step/</id>
+    <content src="http://localhost:4000/posts/Learning-Sagas-Step-By-Step/" />
+    <author>
+      <name>Chinthaka Dharmasiri</name>
+    </author>
+
+  
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      Saga Pattern attempts to solve one of the biggest challenges encountered in micro-service architecture in terms of managing transactions across service boundaries. However implementing Sagas is a challenge on its own for us developers (as opposed to ACID transactions) and requires lot more knowledge, experience and research. I am writing this article to share the knowledge I have gathered throu...
+    </summary>
+  
+
+  </entry>
+
+  
+  <entry>
+    <title>Refresh Memory While Having a Deeper Look at Java equals() and hashCode() Methods</title>
+    <link href="http://localhost:4000/posts/Java-equals-and-hashCode-methods/" rel="alternate" type="text/html" title="Refresh Memory While Having a Deeper Look at Java equals() and hashCode() Methods" />
+    <published>2020-12-19T00:00:00+00:00</published>
+  
+    <updated>2020-12-19T00:00:00+00:00</updated>
+  
+    <id>http://localhost:4000/posts/Java-equals-and-hashCode-methods/</id>
+    <content src="http://localhost:4000/posts/Java-equals-and-hashCode-methods/" />
+    <author>
+      <name>Chinthaka Dharmasiri</name>
+    </author>
+
+  
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      I was writing a small piece of code for a Proof of Concept, and required to write an equals method and was wondering if I had given thought to it in my career of 8 years. Yes I know it, but do I really know it enough. This was the revision exercise I did, which I thought of sharing as an simplistic article with everyone.
+
+These are two very important methods that all Java developers are well aw...
+    </summary>
+  
+
+  </entry>
+
+  
+  <entry>
+    <title>How to Create a Helm Repo in Git?</title>
+    <link href="http://localhost:4000/posts/how-to-create-git-based-helm-repo/" rel="alternate" type="text/html" title="How to Create a Helm Repo in Git?" />
+    <published>2019-01-08T00:00:00+00:00</published>
+  
+    <updated>2019-01-10T06:40:41+00:00</updated>
+  
+    <id>http://localhost:4000/posts/how-to-create-git-based-helm-repo/</id>
+    <content src="http://localhost:4000/posts/how-to-create-git-based-helm-repo/" />
+    <author>
+      <name>Chinthaka Dharmasiri</name>
+    </author>
+
+  
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      If you know Helm, you know helm chart repositories. It is like maven repositories, instead these repositories hold onto the
+different charts that can be used to install different tools and products into a kubernetes environment. If you are planning to use Helm in your organization to manage your own deployments, lets say your micro-services, then most probably you have come across the need for ...
+    </summary>
+  
+
+  </entry>
+
+  
+  <entry>
+    <title>How to use JVisualVM and Java Mission Control to monitor Spring Boot Apps in Kubernetes?</title>
+    <link href="http://localhost:4000/posts/JVisualVM-to-monitor-Spring-Boot-Apps-in-Kubernetes/" rel="alternate" type="text/html" title="How to use JVisualVM and Java Mission Control to monitor Spring Boot Apps in Kubernetes?" />
+    <published>2018-11-15T00:00:00+00:00</published>
+  
+    <updated>2021-11-30T08:42:22+00:00</updated>
+  
+    <id>http://localhost:4000/posts/JVisualVM-to-monitor-Spring-Boot-Apps-in-Kubernetes/</id>
+    <content src="http://localhost:4000/posts/JVisualVM-to-monitor-Spring-Boot-Apps-in-Kubernetes/" />
+    <author>
+      <name>Chinthaka Dharmasiri</name>
+    </author>
+
+  
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      I thought of writing this as it is useful starting point for any developer who wants to start
+monitoring the JVMs of containers running as Kubernetes Pods.
+As I experienced during last few months, JVM optimization is one of the biggest challenges that
+enterprises face in moving towards Cloud Platforms with Java based microservices.
+As often heard from many platform engineers, Java is “hungry” f...
+    </summary>
+  
+
+  </entry>
+
+</feed>
+
+
