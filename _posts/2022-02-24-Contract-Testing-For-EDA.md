@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Contract Testing for Event Driven Architectures :: Can We, Do We and How Do We?
+title: Contract Testing for Event Driven Architectures - Can We, Do We and How Do We?
 ---
  
 
@@ -103,7 +103,7 @@ If we follow the Pact Approach, it means that Contract Testing will follow diffe
 So we started asking ourselves, why should we make two different choices for two different protocols.
 For Pact as a Framework, their design choice makes sense to them.
 
-```
+```text
 To reiterate: Pact does not know about the various message queueing technologies - there are simply too many! And more importantly, Pact is really about testing the messages that pass between them, you can still write your standard functional tests using other frameworks designed for such things.
 ```
 Quoted from: https://docs.pact.io/getting_started/how_pact_works#how-to-write-message-pact-tests
