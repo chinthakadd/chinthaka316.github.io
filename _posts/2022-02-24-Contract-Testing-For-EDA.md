@@ -149,9 +149,7 @@ So it becomes a trade-off between the value of testing vs. the maintainability c
 
 ## Is CDC the only Option here for Messaging?
 
-This was a question that we asked the community as well.
-
-https://stackoverflow.com/questions/71028845/do-we-need-to-do-consumer-driven-contract-testing-kafka-driven-micro-services-wh
+This was a question that we asked the community as well. [link](https://stackoverflow.com/questions/71028845/do-we-need-to-do-consumer-driven-contract-testing-kafka-driven-micro-services-wh)
 
 An alternative would be to write Producer Driven Contract Tests instead. However at present, the same challenges presented above for CDC in messaging applies in here as well. But this is an approach that may be promising if we can have tooling for it.
 
