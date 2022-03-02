@@ -52,7 +52,7 @@
 <meta property="twitter:title" content="Contract Testing for Event Driven Architectures - Can We, Do We and How Do We?" />
 <meta name="twitter:site" content="@chinthaka316" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-02-25T07:06:06+00:00","datePublished":"2022-02-24T00:00:00+00:00","description":"Introduction","headline":"Contract Testing for Event Driven Architectures - Can We, Do We and How Do We?","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/Contract-Testing-For-EDA/"},"url":"http://localhost:4000/posts/Contract-Testing-For-EDA/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-02-25T07:17:46+00:00","datePublished":"2022-02-24T00:00:00+00:00","description":"Introduction","headline":"Contract Testing for Event Driven Architectures - Can We, Do We and How Do We?","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/Contract-Testing-For-EDA/"},"url":"http://localhost:4000/posts/Contract-Testing-For-EDA/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -475,6 +475,81 @@
     
 
   
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+        
+      
+      
+        
+      
+      
+        
+      
+      
+        
+      
+      
+        
+      
+      
+        
+      
+      
+        
+
+    
+      
+
+      <!-- lazy-load images <https://github.com/ApoorvSaxena/lozad.js#usage> -->
+
+      
+
+    
+
+    <!-- Add SVG placehoder to prevent layout reflow -->
+
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    
+
+  
 
   
 
@@ -674,7 +749,7 @@
 -->
 
 <em class="timeago"
-    data-ts="1645772766"
+    data-ts="1645773466"
     
       data-toggle="tooltip" data-placement="bottom" data-tooltip-df="llll"
     
@@ -705,8 +780,8 @@
 
 <!-- return element -->
 <span class="readtime" data-toggle="tooltip" data-placement="bottom"
-  title="2149 words">
-  <em>11 min</em> read</span>
+  title="2251 words">
+  <em>12 min</em> read</span>
 
 
       <!-- page views -->
@@ -725,7 +800,6 @@
 <p>While Contract Testing is an important testing concept which became extremely popular in the microservices world, it is mostly associated with the RESTful realm. Therefore when it comes to messaging, we wanted to evaluate how contract testing fits in the test pyramid. Can we actually perform Contract Testing? Are there any challenges? What value does it bring? Pressed reset button and we went into research mode as it required us to dig deeper.</p>
 
 <!-- ![[Test-Pyramid.excalidraw]] -->
-
 <p><img data-src="https://raw.githubusercontent.com/chinthakadd/chinthakadd.github.io/master/_posts/images/Test-Pyramid.png" alt="Testing Pyramid" data-proofer-ignore></p>
 
 <p>In this article I would like share what we learnt and the opinion that we built around it. As all opinions go, it is subjected to change, but given the current context, we think it is the right way to go.</p>
@@ -824,8 +898,6 @@ I want the Producer to comply with this contract and run verification tests agai
 
 <p>https://docs.pact.io/getting_started/how_pact_works#how-to-write-message-pact-tests</p>
 
-<p>TODO: Diagrams explaining the difference between the two approaches.</p>
-
 <p>Diving deep into these two approaches, we came to the realization that these frameworks have very different ideologies when it comes to messaging support of contract testing (with different but valid reasons of course)</p>
 
 <p>As I mentioned before, in the REST APIs, both Pact and SCC follow the same principles. Both frameworks have implemented Consumer Driven Contract Testing as a form of Integration Testing.
@@ -858,7 +930,10 @@ For Pact as a Framework, their design choice makes sense to them.</p>
 
 <p>SCC on the other hand allows us to be consistent. So the use of SCC approach for messaging started to be bit more interesting and aligned with our thought process.</p>
 
-<p>But more to come…</p>
+<!-- ![[SCC-Pact-Messaging.excalidraw]] -->
+<p><img data-src="https://raw.githubusercontent.com/chinthakadd/chinthakadd.github.io/master/_posts/images/SCC-Pact-Messaging.png" alt="Different Approaches of Pact and SCC for Messaging" data-proofer-ignore></p>
+
+<p>Above diagram depicts the difference between the two approaches. But more to come…</p>
 
 <p>When we talk about REST, we implicitly mean REST / JSON most of the time. But in messaging, JSON is not the standard. Remember the scope I outlined as well. We want to use a schema oriented serialization format, i.e. Avro.</p>
 
@@ -870,18 +945,20 @@ For Pact as a Framework, their design choice makes sense to them.</p>
 
 <p>In REST APIs, we define a Specification using Open API. The term “specification” is the key here. It is not a real schema. We use JSON as the serialization format for request and responses which is not schema oriented. The lack of such schema orientation made Contract Testing absolutely vital in the context of REST. We had no other choice to validate if the specification is actually implemented in the producer side.</p>
 
-<p>Also most producer APIs were often poorly designed by our own mistakes breaking single responsibility principle. We often made APIs do many things in one, and it was easy because there was no schema or a rule that prevented us from doing so. If the design was proper, the specification itself could have covered most of the contracts. But it never did.  On the other hand, specifications are not capable to upheld compatibility rules. They were not meant for it.</p>
+<p>Also most producer APIs were often poorly designed by our own mistakes breaking Single Responsibility Principle. We often made APIs do many things in one, and it was easy because there was no schema or a rule that prevented us from doing so. If the design was proper, the specification itself could have covered most of the contracts. But it never did.  On the other hand, specifications are not capable to upheld compatibility rules. They were not meant for it.</p>
 
 <p><strong>Can we learn from REST and do somethings different in Kafka?</strong></p>
 
 <p>Yes we can. In Kafka with Avro, we have one more additional tool at hand. That is the <code class="language-plaintext highlighter-rouge">Schema</code>. Schema is powerful than the specification in this respect. You can apply compatibility rules for a schema and make sure that producers can only change their production within a limited scope that doesn’t break consumers. Schema Registry provides this verification capability and it can be done far early in the development cycle even before testing.</p>
 
-<p>Next let’s think about message modeling. In an Event Driven Architecture, messages in the form of Events and Commands are entitled to have a Strong Schema definition. Those must be defined with single responsibility in mind. For instance, we should not create a generic multi-purposed command messages grouping many commands. That easily creates confusions and many interpretations of the same schema introducing the need for different consumer contracts. (TODO: Good example goes here). Instead a message model should be well defined with Single Responsibility rule in consideration.</p>
+<p>Next let’s think about message modeling. In an Event Driven Architecture, messages in the form of Events and Commands are entitled to have a Strong Schema definition. Those must be defined with single responsibility in mind. For instance, we should not create a generic multi-purposed command messages grouping many commands. That easily creates confusions and many interpretations of the same schema introducing the need for different consumer contracts.</p>
+
+<p>For example, assume the case of transfers where there are two sub-types, i.e. Internal Transfers and External Transfers. External Transfers require to hold lot more information typically compared to internal transfers (ex: Bank’s Routing Number). Defining a single command called <code class="language-plaintext highlighter-rouge">InitiateTransferCommand</code> or an event called <code class="language-plaintext highlighter-rouge">TransferEvent</code> for both sub-types would create the need for schema relaxations and different contract definitions. Therefore, creating a command / event for each type of transfers is recommended instead taking Single Responsibility Principle into consideration.</p>
 
 <p>So if our architecture is based on the following:</p>
 
 <ul>
-  <li>All message models and topics are defined with Single Responsibility rule in mind.</li>
+  <li>All message models and topics are defined with Single Responsibility Principle in mind.</li>
   <li>We define such strong schema definitions with only small percentage of relaxed rules for attributes that are optional</li>
   <li>We apply proper compatibility rules for all schemas and verify them through schema registry</li>
 </ul>
@@ -912,7 +989,35 @@ For Pact as a Framework, their design choice makes sense to them.</p>
 
 <h2 id="references"><span class="mr-2">References</span><a href="#references" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2></h2>
 
-<p>TODO:…</p>
+<ul>
+  <li>Great introduction to Consumer Driven Contract Testing &amp; Pact:
+    <ul>
+      <li>https://www.youtube.com/watch?v=-6x6XBDf9sQ&amp;list=PLiMP2R4ptDW3aFt2zN0qmgvdmJnXQKePh&amp;index=7&amp;t=662s</li>
+    </ul>
+  </li>
+  <li>Discussion on how to do Contract Testing in EDA:
+    <ul>
+      <li>https://stackoverflow.com/questions/71028845/do-we-need-to-do-consumer-driven-contract-testing-kafka-driven-micro-services-wh</li>
+    </ul>
+  </li>
+  <li>Lack of Support for Avro/Schema Registry in Contract Testing Frameworks
+    <ul>
+      <li>https://stackoverflow.com/questions/66654842/spring-cloud-contract-tests-for-avro-messages-using-schema-registry</li>
+      <li>https://github.com/pact-foundation/pact-jvm/issues/603</li>
+      <li>https://www.youtube.com/watch?v=75uA3X2lVqo</li>
+    </ul>
+  </li>
+  <li>Schemas vs. Contracts:
+    <ul>
+      <li>https://pactflow.io/blog/schemas-are-not-contracts/</li>
+    </ul>
+  </li>
+  <li>Schema Evolution and Compatibility:
+    <ul>
+      <li>https://www.confluent.io/blog/schemas-contracts-compatibility/</li>
+    </ul>
+  </li>
+</ul>
 
 
 </div>

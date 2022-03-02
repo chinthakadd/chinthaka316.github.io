@@ -11,7 +11,6 @@ In recent past, I had the chance to involve deeply in setting up a developer tes
 While Contract Testing is an important testing concept which became extremely popular in the microservices world, it is mostly associated with the RESTful realm. Therefore when it comes to messaging, we wanted to evaluate how contract testing fits in the test pyramid. Can we actually perform Contract Testing? Are there any challenges? What value does it bring? Pressed reset button and we went into research mode as it required us to dig deeper. 
 
 <!-- ![[Test-Pyramid.excalidraw]] -->
-
 ![Testing Pyramid](https://raw.githubusercontent.com/chinthakadd/chinthakadd.github.io/master/_posts/images/Test-Pyramid.png)
 
 In this article I would like share what we learnt and the opinion that we built around it. As all opinions go, it is subjected to change, but given the current context, we think it is the right way to go.
@@ -83,8 +82,6 @@ https://cloud.spring.io/spring-cloud-contract/reference/html/project-features.ht
 
 https://docs.pact.io/getting_started/how_pact_works#how-to-write-message-pact-tests
 
-TODO: Diagrams explaining the difference between the two approaches.
-
 Diving deep into these two approaches, we came to the realization that these frameworks have very different ideologies when it comes to messaging support of contract testing (with different but valid reasons of course)
 
 As I mentioned before, in the REST APIs, both Pact and SCC follow the same principles. Both frameworks have implemented Consumer Driven Contract Testing as a form of Integration Testing.
@@ -113,7 +110,10 @@ But would that simply makes sense for us when we have standardized our architect
 
 SCC on the other hand allows us to be consistent. So the use of SCC approach for messaging started to be bit more interesting and aligned with our thought process.
 
-But more to come...
+<!-- ![[SCC-Pact-Messaging.excalidraw]] -->
+![Different Approaches of Pact and SCC for Messaging](https://raw.githubusercontent.com/chinthakadd/chinthakadd.github.io/master/_posts/images/SCC-Pact-Messaging.png)
+
+Above diagram depicts the difference between the two approaches. But more to come...
 
 When we talk about REST, we implicitly mean REST / JSON most of the time. But in messaging, JSON is not the standard. Remember the scope I outlined as well. We want to use a schema oriented serialization format, i.e. Avro. 
 
@@ -125,17 +125,19 @@ This is where we came to a bit of dilemma. How do we go from here? So we started
 
 In REST APIs, we define a Specification using Open API. The term "specification" is the key here. It is not a real schema. We use JSON as the serialization format for request and responses which is not schema oriented. The lack of such schema orientation made Contract Testing absolutely vital in the context of REST. We had no other choice to validate if the specification is actually implemented in the producer side. 
 
-Also most producer APIs were often poorly designed by our own mistakes breaking single responsibility principle. We often made APIs do many things in one, and it was easy because there was no schema or a rule that prevented us from doing so. If the design was proper, the specification itself could have covered most of the contracts. But it never did.  On the other hand, specifications are not capable to upheld compatibility rules. They were not meant for it.
+Also most producer APIs were often poorly designed by our own mistakes breaking Single Responsibility Principle. We often made APIs do many things in one, and it was easy because there was no schema or a rule that prevented us from doing so. If the design was proper, the specification itself could have covered most of the contracts. But it never did.  On the other hand, specifications are not capable to upheld compatibility rules. They were not meant for it.
 
 **Can we learn from REST and do somethings different in Kafka?**
 
 Yes we can. In Kafka with Avro, we have one more additional tool at hand. That is the `Schema`. Schema is powerful than the specification in this respect. You can apply compatibility rules for a schema and make sure that producers can only change their production within a limited scope that doesn't break consumers. Schema Registry provides this verification capability and it can be done far early in the development cycle even before testing.
 
-Next let's think about message modeling. In an Event Driven Architecture, messages in the form of Events and Commands are entitled to have a Strong Schema definition. Those must be defined with single responsibility in mind. For instance, we should not create a generic multi-purposed command messages grouping many commands. That easily creates confusions and many interpretations of the same schema introducing the need for different consumer contracts. (TODO: Good example goes here). Instead a message model should be well defined with Single Responsibility rule in consideration.
+Next let's think about message modeling. In an Event Driven Architecture, messages in the form of Events and Commands are entitled to have a Strong Schema definition. Those must be defined with single responsibility in mind. For instance, we should not create a generic multi-purposed command messages grouping many commands. That easily creates confusions and many interpretations of the same schema introducing the need for different consumer contracts. 
+
+For example, assume the case of transfers where there are two sub-types, i.e. Internal Transfers and External Transfers. External Transfers require to hold lot more information typically compared to internal transfers (ex: Bank's Routing Number). Defining a single command called `InitiateTransferCommand` or an event called `TransferEvent` for both sub-types would create the need for schema relaxations and different contract definitions. Therefore, creating a command / event for each type of transfers is recommended instead taking Single Responsibility Principle into consideration.
 
 So if our architecture is based on the following:
 
-- All message models and topics are defined with Single Responsibility rule in mind. 
+- All message models and topics are defined with Single Responsibility Principle in mind. 
 - We define such strong schema definitions with only small percentage of relaxed rules for attributes that are optional
 - We apply proper compatibility rules for all schemas and verify them through schema registry
 
@@ -166,5 +168,21 @@ Of course if there are better alternatives, feel free to suggest and always happ
 
 ## References
 
-TODO:...
+- Great introduction to Consumer Driven Contract Testing & Pact:
+	- https://www.youtube.com/watch?v=-6x6XBDf9sQ&list=PLiMP2R4ptDW3aFt2zN0qmgvdmJnXQKePh&index=7&t=662s
 
+- Discussion on how to do Contract Testing in EDA:
+	- https://stackoverflow.com/questions/71028845/do-we-need-to-do-consumer-driven-contract-testing-kafka-driven-micro-services-wh
+
+- Lack of Support for Avro/Schema Registry in Contract Testing Frameworks 
+	- https://stackoverflow.com/questions/66654842/spring-cloud-contract-tests-for-avro-messages-using-schema-registry
+	- https://github.com/pact-foundation/pact-jvm/issues/603
+	- https://www.youtube.com/watch?v=75uA3X2lVqo
+
+- Schemas vs. Contracts:
+	- https://pactflow.io/blog/schemas-are-not-contracts/
+
+- Schema Evolution and Compatibility:
+	- https://www.confluent.io/blog/schemas-contracts-compatibility/
+
+  
