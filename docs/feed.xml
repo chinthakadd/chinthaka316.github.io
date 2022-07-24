@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>Chinthaka Dharmasiri</title>
   <subtitle>Technology Enthusiast from Sri Lanka, currently living in Pittsburgh.</subtitle>
-  <updated>2022-03-04T05:37:00+00:00</updated>
+  <updated>2022-07-24T21:41:55+00:00</updated>
   <author>
     <name>Chinthaka Dharmasiri</name>
     <uri>http://localhost:4000/</uri>
@@ -20,11 +20,48 @@
 
   
   <entry>
+    <title>Kafka vs. RabbitMQ   —  My Top 10 Differences</title>
+    <link href="http://localhost:4000/posts/Kafka-vs-RabbitMQ-Top-10/" rel="alternate" type="text/html" title="Kafka vs. RabbitMQ   —  My Top 10 Differences" />
+    <published>2022-07-24T00:00:00+00:00</published>
+  
+    <updated>2022-07-24T00:00:00+00:00</updated>
+  
+    <id>http://localhost:4000/posts/Kafka-vs-RabbitMQ-Top-10/</id>
+    <content src="http://localhost:4000/posts/Kafka-vs-RabbitMQ-Top-10/" />
+    <author>
+      <name>Chinthaka Dharmasiri</name>
+    </author>
+
+  
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      Just wanted to publish a top 10 list differences between these two messaging platforms which are both awesome in my opinion. So let’s jump in.
+
+[1] Dumb or Smart?
+
+Kafka follows the Dumb-Broker / Smart Clients concept. RabbitMQ adopts the opposite and has many built-in broker features making it intelligent. 
+AMQP protocol that RabbitMQ adopts requires the broker to be more intelligent about rou...
+    </summary>
+  
+
+  </entry>
+
+  
+  <entry>
     <title>Contract Testing for Event Driven Architectures - Can We, Do We and How Do We?</title>
     <link href="http://localhost:4000/posts/Contract-Testing-For-EDA/" rel="alternate" type="text/html" title="Contract Testing for Event Driven Architectures - Can We, Do We and How Do We?" />
     <published>2022-02-24T00:00:00+00:00</published>
   
-    <updated>2022-03-02T05:32:24+00:00</updated>
+    <updated>2022-07-24T21:24:01+00:00</updated>
   
     <id>http://localhost:4000/posts/Contract-Testing-For-EDA/</id>
     <content src="http://localhost:4000/posts/Contract-Testing-For-EDA/" />
@@ -148,42 +185,6 @@ These are two very important methods that all Java developers are well aw...
 
       If you know Helm, you know helm chart repositories. It is like maven repositories, instead these repositories hold onto the
 different charts that can be used to install different tools and products into a kubernetes environment. If you are planning to use Helm in your organization to manage your own deployments, lets say your micro-services, then most probably you have come across the need for ...
-    </summary>
-  
-
-  </entry>
-
-  
-  <entry>
-    <title>How to use JVisualVM and Java Mission Control to monitor Spring Boot Apps in Kubernetes?</title>
-    <link href="http://localhost:4000/posts/JVisualVM-to-monitor-Spring-Boot-Apps-in-Kubernetes/" rel="alternate" type="text/html" title="How to use JVisualVM and Java Mission Control to monitor Spring Boot Apps in Kubernetes?" />
-    <published>2018-11-15T00:00:00+00:00</published>
-  
-    <updated>2021-11-30T08:42:22+00:00</updated>
-  
-    <id>http://localhost:4000/posts/JVisualVM-to-monitor-Spring-Boot-Apps-in-Kubernetes/</id>
-    <content src="http://localhost:4000/posts/JVisualVM-to-monitor-Spring-Boot-Apps-in-Kubernetes/" />
-    <author>
-      <name>Chinthaka Dharmasiri</name>
-    </author>
-
-  
-    
-  
-
-  
-    <summary>
-      
-
-
-
-
-
-      I thought of writing this as it is useful starting point for any developer who wants to start
-monitoring the JVMs of containers running as Kubernetes Pods.
-As I experienced during last few months, JVM optimization is one of the biggest challenges that
-enterprises face in moving towards Cloud Platforms with Java based microservices.
-As often heard from many platform engineers, Java is “hungry” f...
     </summary>
   
 
